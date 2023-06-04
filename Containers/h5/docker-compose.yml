@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app:
+    image: tcbuild
+    ports:
+      - 8080:8080
+    deploy:
+      replicas: 2
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: testdb
+    ports:
+      - 5432:5432
